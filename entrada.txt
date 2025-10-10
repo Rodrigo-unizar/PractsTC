@@ -35,3 +35,23 @@ ups()
 //up oups
 
 //upoups
+
+/*ups*/
+
+/*
+* ups
+*/
+
+/*    ups      */
+
+/*ups */
+
+/* ups*/
+
+/*comentario que tiene al final ups*/
+
+/*ups**/
+
+/**ups1*/
+
+/*comentario normal que no contiene la palabra upss*/
