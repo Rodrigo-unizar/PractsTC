@@ -21,7 +21,7 @@
 \/\*ups {printf("%s", yytext); encontrado = true; BEGIN(comentarios_a);}
 
 
-ups[ \t]*\([^,)]+,[^,)]+\) {
+ups[ ]*\([^,)]+,[^,)]+\) {
                                 char copia[] = strdup(yytext);
                                 int i = 3;
                                 while(copia[i] != '('){
