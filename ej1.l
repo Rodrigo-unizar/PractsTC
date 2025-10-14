@@ -8,7 +8,6 @@
  #include <stdbool.h>
  #include <string.h>
         bool encontrado = false;
-        char p1[128], p2[128];
 
 %}
 %%
@@ -21,12 +20,14 @@
 \/\*ups {printf("%s", yytext); encontrado = true; BEGIN(comentarios_a);}
 
 
-[^a-zA-Z0-9]+ups[ ]*\([^,)]+,[^,)]+\) {
+[^a-zA-Z0-9\n]+ups[ ]*\([^,)]+,[^,)]+\)|^[ups][ ]*\([^,)]+,[^,)]+\) {
                                 char* copia = strdup(yytext);
                                 int i = 3;
                                 while(copia[i] != '('){
                                         i++;
                                 }
+                                char* iniPar = copia + i;
+                                *iniPar = '\0';
 
                                 char* inicioP1 =copia + i + 1;
                                 while(copia[i] != ','){
@@ -45,7 +46,7 @@
 
                                 *finP2 = '\0'; //cambio el ')' por un fin de cadena de caracteres
 
-                                printf("ups(%s,%s)", inicioP2, inicioP1);
+                                printf("%s(%s,%s)",copia, inicioP2, inicioP1);
 
                                 free(copia);
                                 }
