@@ -20,7 +20,12 @@
 \/\*ups {printf("%s", yytext); encontrado = true; BEGIN(comentarios_a);}
 
 
-[^a-zA-Z0-9\n]+ups[ ]*\([^,)]+,[^,)]+\)|^[ups][ ]*\([^,)]+,[^,)]+\) {
+
+
+
+
+
+[^a-zA-Z0-9\n]ups[ ]*\([^,)]+,[^,)]+\) {
                                 char* copia = strdup(yytext);
                                 int i = 3;
                                 while(copia[i] != '('){
@@ -51,6 +56,36 @@
                                 free(copia);
                                 }
 
+^ups[ ]*\([^,)]+,[^,)]+\)       {
+                                char* copia = strdup(yytext);
+                                int i = 3;
+                                while(copia[i] != '('){
+                                        i++;
+                                }
+                                char* iniPar = copia + i;
+                                *iniPar = '\0';
+
+                                char* inicioP1 =copia + i + 1;
+                                while(copia[i] != ','){
+                                        i++;
+                                }
+
+                                char* finP1 = copia + i;
+
+                                *finP1 = '\0'; //cambio la ',' por un fin de cadena de caracteres
+
+                                char* inicioP2 = copia + i + 1 ; 
+                                while(copia[i] != ')'){
+                                        i++;
+                                }
+                                char* finP2 = copia + i;
+
+                                *finP2 = '\0'; //cambio el ')' por un fin de cadena de caracteres
+
+                                printf("%s(%s,%s)",copia, inicioP2, inicioP1);
+
+                                free(copia);
+                                }
 
 \n      {printf("%s", yytext);}
 .       {printf("%s", yytext);}
