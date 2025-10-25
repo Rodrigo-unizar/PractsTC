@@ -16,13 +16,11 @@
 \/\* {printf("%s", yytext); BEGIN(comentarios_a);}
 
 
-\/\/ups {printf("%s", yytext); encontrado = true; BEGIN(comentarios_b);}
-\/\*ups {printf("%s", yytext); encontrado = true; BEGIN(comentarios_a);}
+\/\/ups				  {printf("%sNO ACTUALIZADO", yytext); }
+\/\/ups[a-zA-Z0-9] 	  {printf("%s", yytext); encontrado = false; BEGIN(comentarios_b);}
 
-
-
-
-
+\/\*ups 			  {printf("%sNO ACTUALIZADO", yytext); }
+\/\*ups[a-zA-Z0-9] 	  {printf("%s", yytext); encontrado = false; BEGIN(comentarios_a);}
 
 
 [^a-zA-Z0-9\n]ups[ ]*\([^,)]+,[^,)]+\) {
