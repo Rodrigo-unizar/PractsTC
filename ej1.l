@@ -16,11 +16,11 @@
 \/\* {printf("%s", yytext); BEGIN(comentarios_a);}
 
 
-\/\/ups				  {printf("%sNO ACTUALIZADO", yytext); }
-\/\/ups[a-zA-Z0-9] 	  {printf("%s", yytext); encontrado = false; BEGIN(comentarios_b);}
+\/\/ups[^a-zA-Z0-9].*		{printf("%sNO ACTUALIZADO", yytext); }
+\/\/ups[a-zA-Z0-9] 			{printf("%s", yytext); encontrado = false; BEGIN(comentarios_b);}
 
-\/\*ups 			  {printf("%sNO ACTUALIZADO", yytext); }
-\/\*ups[a-zA-Z0-9] 	  {printf("%s", yytext); encontrado = false; BEGIN(comentarios_a);}
+\/\*ups					 {printf("%s", yytext); encontrado = true; BEGIN(comentarios_a);}
+\/\*ups[a-zA-Z0-9] 	 	 {printf("%s", yytext); encontrado = false; BEGIN(comentarios_a);}	
 
 
 [^a-zA-Z0-9\n]ups[ ]*\([^,)]+,[^,)]+\) {
@@ -89,7 +89,8 @@
 .       {printf("%s", yytext);}
 
 
-<comentarios_b>[^a-zA-Z0-9]"ups"[^a-zA-Z0-9\n]|[^a-zA-Z0-9]"ups"$ {encontrado = true; printf("%s", yytext);}
+<comentarios_b>[^a-zA-Z0-9]"ups"[^a-zA-Z0-9\n] {encontrado = true; printf("%s", yytext);}
+<comentarios_b>[^a-zA-Z0-9]"ups"$	 		   {encontrado = true; printf("%s", yytext);}
 <comentarios_b>\n  {if(encontrado){encontrado = false; printf("NO ACTUALIZADO%s", yytext);}else{printf("%s", yytext);} BEGIN(INITIAL);}
 <comentarios_b>. {printf("%s", yytext);}
 
@@ -101,10 +102,4 @@
 <comentarios_a>. {printf("%s", yytext);}
 
 
-%%
-
-int main(){
-        int error = yylex();
-        return 0;
-}
 

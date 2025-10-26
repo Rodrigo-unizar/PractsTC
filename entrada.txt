@@ -22,11 +22,17 @@ cups(a1,a2);
 ***/
 ups()
 
-//un comentario peculiarmente largo con ups
+//un comentario peculiarmente largo con ups que tiene cosas detras
 
-//ups
+//cups
 
-//ups1
+// cups
+
+//ups muuuuuuuuuuuuuuuy largo
+
+//ups*1
+
+//ups1 no es valido pero ups si
 
 // ups1
 
@@ -55,6 +61,10 @@ ups()
 /* ups*/
 
 /*comentario que tiene al final ups*/
+
+/*comentraio con ups en el medio*/
+
+/*ups que tiene cosas detras*/
 
 /*ups**/
 
