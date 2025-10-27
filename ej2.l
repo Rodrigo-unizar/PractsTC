@@ -8,5 +8,4 @@
 ^rtr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*tr((v|Vtr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*t)r)*t(r((v|(V|tV(RV)*(r|tr(vr)*V))tr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*tr((v|Vtr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*t)r)*t)r)*(v|(V|tV(RV)*(r|tr(vr)*V))tr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*tr((v|Vtr((v|Vt)r)*tV((R|rtr((v|Vt)r)*t)V)*t)r)*t)?)? {printf("--%s", yytext);}
 
 .* {printf("**%s", yytext);}
-
 %%

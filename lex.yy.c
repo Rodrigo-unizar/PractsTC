@@ -809,7 +809,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 12 "ej2.l"
+#line 11 "ej2.l"
 ECHO;
 	YY_BREAK
 #line 816 "lex.yy.c"
@@ -1820,6 +1820,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 12 "ej2.l"
+#line 11 "ej2.l"
 
 
