@@ -4,18 +4,23 @@ extern int yylex();
 extern int yyerror();
 %}
 %token X Y Z EOL
-%start S 
+%start inicio
 %%
+inicio:  /* nada */
+	| inicio S EOL
+	;
 
-S : EOL
-	| C X S EOL
+S : 	/*nada */
+	| C X S
 	;
-B : X C 
-    | X C Y Z Y 
-	;
-C : X B X 
-    | Z 
-  ;
+
+B : X C
+    | X C Y Z Y
+    ;
+
+C : X B X
+    | Z
+    ;
 %%
 int yyerror(char* s) {
    printf("\n%s\n", s);
