@@ -29,6 +29,7 @@ calclist : /* nada */
         				contador++; // Movemos el índice
     				}
 				printf("=");
+				if(num == 0){printf("%d", num);}
 				if(signo){printf("-");}
 				for (int i = contador - 1; i >= 0; i--) {
      					   printf("%c", hexa[i]);
