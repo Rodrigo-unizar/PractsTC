@@ -14,7 +14,9 @@ extern int yyerror();
 calclist : /* nada */
 	| calclist exp PC EOL { printf("=%d\n", $2); }
 	| calclist exp PCH EOL { int num = $2; char hexa[64]; int contador = 0; int resto = 0; int signo = 0;
-				 if(num < 0){signo = 1; num = -num;}
+				printf("=");
+				if(num == 0){printf("%d", num);} 
+				if(num < 0){printf("-"); num = -num;}
 				 while (num > 0) {
       				 	resto = num % 16; // Obtenemos el resto de dividir por 16
 
@@ -28,9 +30,6 @@ calclist : /* nada */
         				num = num / 16; // Actualizamos el número al cociente
         				contador++; // Movemos el índice
     				}
-				printf("=");
-				if(num == 0){printf("%d", num);}
-				if(signo){printf("-");}
 				for (int i = contador - 1; i >= 0; i--) {
      					   printf("%c", hexa[i]);
     				}

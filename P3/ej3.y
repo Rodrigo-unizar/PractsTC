@@ -1,3 +1,4 @@
+ //Autores: Razvan Ghita Calangiu 927460 ; Rodrigo Herce Alonso 935413
 %{
 #include <stdio.h>
 extern int yylex();
