@@ -1,19 +1,27 @@
+ //Autores: Razvan Ghita Calangiu 927460 ; Rodrigo Herce Alonso 935413
 %{
 #include <stdio.h>
 extern int yylex();
 extern int yyerror();
 %}
-%token S B C X Y Z EOL
+%token X Y Z EOL
+%start inicio
 %%
+inicio:  /* nada */
+	| inicio S EOL
+	;
 
-S : EOL
-	| C X S EOL
+S : 	/*nada */
+	| C X S
 	;
-B :  X C Y Z Y EOL
-    | X C EOL
-	;
-C : X B X EOL
-    | Z EOL
+
+B : X C
+    | X C Y Z Y
+    ;
+
+C : X B X
+    | Z
+    ;
 %%
 int yyerror(char* s) {
    printf("\n%s\n", s);

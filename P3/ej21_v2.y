@@ -1,5 +1,4 @@
- //Autores: Razvan Ghita Calangiu 927460 ; Rodrigo Herce Alonso 935413
-/* ej21.y fichero para la practica 3 de Teoria de la Computacion  */
+/* calcMejor.y fichero para la practica 3 de Teoria de la Computacion  */
 %{
 #include <stdio.h>
 extern int yylex();

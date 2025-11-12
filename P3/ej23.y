@@ -1,19 +1,18 @@
  //Autores: Razvan Ghita Calangiu 927460 ; Rodrigo Herce Alonso 935413
-/* ej21.y fichero para la practica 3 de Teoria de la Computacion  */
+/* ej23.y fichero para la practica 3 de Teoria de la Computacion  */
 %{
 #include <stdio.h>
 extern int yylex();
 extern int yyerror();
 %}
-%token NUMBER EOL CP OP B_NUM BASE
+%token NUMBER EOL CP OP HEXA
 %start calclist
 %token ADD SUB
 %token MUL DIV
 %%
 
 calclist : /* nada */
-	| calclist exp EOL { printf("=%d\n", $2); }
-	| calclist BASE EOL
+	| calclist exp EOL { printf("=%d\n", $2);}
 	;
 exp : 	factor 
 	| exp ADD factor { $$ = $1 + $3; }
@@ -24,8 +23,8 @@ factor : 	factor MUL factorsimple { $$ = $1 * $3; }
 		| factorsimple
 		;
 factorsimple : 	OP exp CP { $$ = $2; }
-		| NUMBER
-		| B_NUM 
+		| NUMBER 
+		| HEXA
 		;
 %%
 int yyerror(char* s) {
